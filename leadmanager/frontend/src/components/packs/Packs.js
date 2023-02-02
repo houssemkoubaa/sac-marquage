@@ -7,7 +7,7 @@ export class Packs extends Component {
   static propTypes = {
     packs: PropTypes.array.isRequired,
     getPacks: PropTypes.func.isRequired,
-    deletePacks: PropTypes.func.isRequired,
+    deletePack: PropTypes.func.isRequired,
   };
 
   componentDidMount() {

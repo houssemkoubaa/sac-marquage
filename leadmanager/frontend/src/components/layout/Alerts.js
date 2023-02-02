@@ -6,11 +6,11 @@ import PropTypes from "prop-types";
 export class Alerts extends Component {
   static propTypes = {
     error: PropTypes.object.isRequired,
-    position: PropTypes.object.isRequired,
+    message: PropTypes.object.isRequired,
   };
 
   componentDidUpdate(previousProps) {
-    const { error, alert, position } = this.props;
+    const { error, alert, message } = this.props;
     if (error !== previousProps.error) {
       if (error.msg.name) alert.error(`Name: ${error.msg.name.join()}`);
       if (error.msg.RFID) alert.error(`RFID: ${error.msg.RFID.join()}`);
@@ -20,10 +20,10 @@ export class Alerts extends Component {
         alert.error(error.msg.none_field_errors.join());
       if (error.msg.username) alert.error(error.msg.username.join());
     }
-    if (position !== previousProps.position) {
-      if (position.deletePack) alert.success(position.deletePack);
-      if (position.addPack) alert.success(position.addPack);
-      if (position.passwordNotMatch) alert.error(position.passwordNotMatch);
+    if (message !== previousProps.message) {
+      if (message.deletePack) alert.success(message.deletePack);
+      if (message.addPack) alert.success(message.addPack);
+      if (message.passwordNotMatch) alert.error(message.passwordNotMatch);
     }
   }
 
@@ -34,7 +34,7 @@ export class Alerts extends Component {
 
 const mapStateToProps = (state) => ({
   error: state.errors,
-  position: state.positions,
+  message: state.messages,
 });
 
 export default connect(mapStateToProps)(withAlert()(Alerts));
