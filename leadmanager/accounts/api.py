@@ -12,37 +12,33 @@ class RegisterAPI(generics.GenericAPIView):
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        user = serializer.save()  # save user in datebase
+        user = serializer.save()
         return Response({
             "user": UserSerializer(user, context=self.get_serializer_context()).data,
-            # when register get token to log in immediatly
-            # to know who u are when logging in
             "token": AuthToken.objects.create(user)[1]
         })
-# login api
+
+# Login API
 
 
 class LoginAPI(generics.GenericAPIView):
-
     serializer_class = LoginSerializer
 
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        user = serializer.validated_data  # save user in datebase
+        user = serializer.validated_data
+        _, token = AuthToken.objects.create(user)
         return Response({
             "user": UserSerializer(user, context=self.get_serializer_context()).data,
-            # when register get token to log in immediatly
-            # to know who u are when logging in
-            "token": AuthToken.objects.create(user)[1]
+            "token": token
         })
-# getuser api
-# nkharaj el user mel token
+
+# Get User API
 
 
 class UserAPI(generics.RetrieveAPIView):
     permission_classes = [
-        # needs to have valide token to access
         permissions.IsAuthenticated,
     ]
     serializer_class = UserSerializer

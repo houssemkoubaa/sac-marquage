@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import {
   HashRouter as Router,
   Route,
@@ -42,8 +43,8 @@ class App extends Component {
               <Alerts />
               <div className="container">
                 <Switch>
-                  <Route exact path="/" element={<PrivateRoute />}>
-                    <Route exact path="/" element={<Dashboard />} />
+                  <Route exact path="*" element={<PrivateRoute />}>
+                    <Route exact path="*" element={<Dashboard />} />
                   </Route>
                   <Route path={"/register"} element={<Register />}></Route>
                   <Route path={"/login"} element={<Login />}></Route>
@@ -57,4 +58,6 @@ class App extends Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById("app"));
+// ReactDOM.render(<App />, document.getElementById("app"));
+const root = createRoot(document.getElementById("app"));
+root.render(<App />);

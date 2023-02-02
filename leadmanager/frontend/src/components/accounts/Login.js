@@ -56,9 +56,9 @@ export class Login extends Component {
   onChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
   render() {
-    // if (this.props.isAuthenticated) {
-    //   return <Navigate to="/" />;
-    // }
+    if (this.props.isAuthenticated) {
+      return <Navigate to="*" replace={true} />;
+    }
     const { username, password } = this.state;
     return (
       <ThemeProvider theme={theme}>

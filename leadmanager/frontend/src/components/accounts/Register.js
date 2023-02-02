@@ -71,7 +71,7 @@ export class Register extends Component {
 
   render() {
     if (this.props.isAuthenticated) {
-      return <Navigate to="/" />;
+      return <Navigate to="*" replace={true} />;
     }
     const { username, email, password, password2 } = this.state;
     return (
