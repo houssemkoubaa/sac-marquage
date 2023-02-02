@@ -43,9 +43,9 @@ class App extends Component {
               <Alerts />
               <div className="container">
                 <Switch>
-                  <Route exact path="*" element={<PrivateRoute />}>
-                    <Route exact path="*" element={<Dashboard />} />
-                  </Route>
+                  {/* <Route exact path="/" element={<PrivateRoute />}> */}
+                  <Route exact path="/" element={<Dashboard />} />
+                  {/* </Route> */}
                   <Route path={"/register"} element={<Register />}></Route>
                   <Route path={"/login"} element={<Login />}></Route>
                 </Switch>
