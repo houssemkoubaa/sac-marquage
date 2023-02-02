@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { add_lead } from "../../actions/leads";
+import { add_pack } from "../../actions/packs";
 
 export class Form extends Component {
   state = {
     name: "",
-    email: "",
-    message: "",
+    RFID: "",
+    position: "",
   };
 
   static propTypes = {
-    add_lead: PropTypes.func.isRequired,
+    add_pack: PropTypes.func.isRequired,
   };
 
   onChange = (e) =>
@@ -21,20 +21,20 @@ export class Form extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    const { name, email, message } = this.state;
-    const lead = { name, email, message };
-    this.props.add_lead(lead);
+    const { name, RFID, position } = this.state;
+    const pack = { name, RFID, position };
+    this.props.add_pack(pack);
     this.setState({
       name: "",
-      email: "",
-      message: "",
+      RFID: "",
+      position: "",
     });
   };
   render() {
-    const { name, email, message } = this.state;
+    const { name, RFID, position } = this.state;
     return (
       <div className="card card-body mt-4 mb-4">
-        <h2>Add Lead</h2>
+        <h2>Add pack</h2>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label>Name</label>
@@ -47,23 +47,23 @@ export class Form extends Component {
             />
           </div>
           <div className="form-group">
-            <label>Email</label>
+            <label>RFID</label>
             <input
               className="form-control"
-              type="email"
-              name="email"
+              type="RFID"
+              name="RFID"
               onChange={this.onChange}
-              value={email}
+              value={RFID}
             />
           </div>
           <div className="form-group">
-            <label>Message</label>
+            <label>position</label>
             <textarea
               className="form-control"
               type="text"
-              name="message"
+              name="position"
               onChange={this.onChange}
-              value={message}
+              value={position}
             />
           </div>
           <div className="form-group">
@@ -77,4 +77,4 @@ export class Form extends Component {
   }
 }
 
-export default connect(null, { add_lead })(Form);
+export default connect(null, { add_pack })(Form);

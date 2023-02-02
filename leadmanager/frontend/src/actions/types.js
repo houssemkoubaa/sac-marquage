@@ -1,6 +1,6 @@
-export const GET_LEADS = "GET_LEADS";
-export const DELETE_LEAD = "DELETE_LEAD";
-export const ADD_LEAD = "ADD_LEAD";
+export const GET_PACKS = "GET_PACKS";
+export const DELETE_PACK = "DELETE_PACK";
+export const ADD_PACK = "ADD_PACK";
 export const GET_ERRORS = "GET_ERRORS";
 export const GET_MESSAGES = "GET_MESSAGES";
 export const CREATE_MESSAGES = "CREATE_MESSAGES";
@@ -12,4 +12,4 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAIL = "REGISTER_FAIL";
-export const CLEAR_LEADS = "CLEAR_LEADS";
+export const CLEAR_PACKS = "CLEAR_PACKS";

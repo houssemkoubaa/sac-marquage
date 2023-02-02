@@ -1,35 +1,35 @@
 import {
-  GET_LEADS,
-  DELETE_LEAD,
-  ADD_LEAD,
-  CLEAR_LEADS,
+  GET_PACKS,
+  DELETE_PACK,
+  ADD_PACK,
+  CLEAR_PACKS,
 } from "../actions/types.js";
 
 const initialState = {
-  leads: [],
+  packs: [],
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case GET_LEADS:
+    case GET_PACKS:
       return {
         ...state,
-        leads: action.payload,
+        packs: action.payload,
       };
-    case DELETE_LEAD:
+    case DELETE_PACK:
       return {
         ...state,
-        leads: state.leads.filter((lead) => lead.id !== action.payload),
+        packs: state.packs.filter((pack) => pack.id !== action.payload),
       };
-    case ADD_LEAD:
+    case ADD_PACK:
       return {
         ...state,
-        leads: [...state.leads, action.payload],
+        packs: [...state.packs, action.payload],
       };
-    case CLEAR_LEADS:
+    case CLEAR_PACKS:
       return {
         ...state,
-        leads: [],
+        packs: [],
       };
     default:
       return state;
